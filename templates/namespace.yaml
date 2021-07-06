@@ -2,5 +2,13 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
-    tier: test
-  name: {{ .Values.namespace.name }} 
+    app: train-mongo
+  name: {{ .Values.dbNamespace.name }} 
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.appNamespace.name }} 
+  labels:
+    app: train-app
+    istio-injection: enabled
