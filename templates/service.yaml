@@ -1,0 +1,238 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-admin-basic-info-service
+    tag: #Change
+  name: ts-admin-basic-info-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-admin-basic-info-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-admin-order-service
+    tag: #Change
+  name: ts-admin-order-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-admin-order-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-admin-route-service
+    tag: #Change
+  name: ts-admin-route-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-admin-route-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-admin-travel-service
+    tag: #Change
+  name: ts-admin-travel-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-admin-travel-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-admin-user-service
+    tag: #Change
+  name: ts-admin-user-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-admin-user-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-assurance-service
+    tag: #Change
+  name: ts-assurance-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-assurance-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-basic-service
+    tag: #Change
+  name: ts-basic-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-basic-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-cancel-service
+    tag: #Change
+  name: ts-cancel-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-cancel-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-config-service
+    tag: #Change
+  name: ts-config-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-config-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-consign-price-service
+    tag: #Change
+  name: ts-consign-price-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-consign-price-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-consign-service
+    tag: #Change
+  name: ts-consign-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-consign-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ts-contacts-service
+    tag: #Change
+  name: ts-contacts-service
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  ports:
+  - port: {{ .Values.service.port }} 
+    protocol: TCP
+    targetPort: {{ .Values.service.port }}
+  selector:
+    app: ts-contacts-service
+    tag: #Change
+  type: {{ .Values.service.type }} 
+
+
+

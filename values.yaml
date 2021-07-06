@@ -1,0 +1,21 @@
+namespace:
+  name: train-app
+ 
+service:
+  port: 8111
+  type: ClusterIP
+
+image:
+  repository: train-app
+  tag:  #Change
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 256Mi
+
+configmap:
+  data: "version: "  #Change
