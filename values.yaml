@@ -1,21 +1,761 @@
-namespace:
-  name: train-app
- 
-service:
-  port: 8111
-  type: ClusterIP
+dbNamespace:
+  name: train-mongo
 
-image:
-  repository: train-app
-  tag:  #Change
+dbMongoImage:
+  repository: harbor.coe.com/train_app_prod/mongo
+  tag: latest
   pullPolicy: IfNotPresent
 
-replicaCount: 1
+dbMysqlImage:
+  repository: mysql
+  tag: 5.6.35
+  pullPolicy: IfNotPresent
 
-resources:
-  requests:
-    cpu: 50m
-    memory: 256Mi
+appNamespace:
+  name: train-app
 
-configmap:
-  data: "version: "  #Change
+tsUserMongoService:
+  name: ts-user-mongo
+  label:
+    app: ts-user-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsAuthMongoService:
+  name: ts-auth-mongo
+  label:
+    app: ts-auth-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsRouteMongoService:
+  name: ts-route-mongo
+  label:
+    app: ts-route-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsContactsMongoService:
+  name: ts-contacts-mongo
+  label:
+    app: ts-contacts-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsOrderMongoService:
+  name: ts-order-mongo
+  label:
+    app: ts-order-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsOrderOtherMongoService:
+  name: ts-order-other-mongo
+  label:
+    app: ts-order-other-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsConfigMongoService:
+  name: ts-config-mongo
+  label:
+    app: ts-config-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsStationMongoService:
+  name: ts-station-mongo
+  label:
+    app: ts-station-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsTrainMongoService:
+  name: ts-train-mongo
+  label:
+    app: ts-train-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsTravelMongoService:
+  name: ts-travel-mongo
+  label:
+    app: ts-travel-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsTrain2MongoService:
+  name: ts-train2-mongo
+  label:
+    app: ts-train2-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsPriceMongoService:
+  name: ts-price-mongo
+  label:
+    app: ts-price-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsSecurityMongoService:
+  name: ts-security-mongo
+  label:
+    app: ts-security-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsInsidePaymentMongoService:
+  name: ts-inside-payment-mongo
+  label:
+    app: ts-inside-payment-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsPaymentMongoService:
+  name: ts-payment-mongo
+  label:
+    app: ts-payment-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsAssuranceMongoService:
+  name: ts-assurance-mongo
+  label:
+    app: ts-assurance-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsTicketOfficeMongoService:
+  name: ts-ticket-office-mongo
+  label:
+    app: ts-ticket-office-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsVoucherMysqlService:
+  name: ts-voucher-mysql
+  label:
+    app: ts-voucher-mysql
+  replicaCount: 1
+  containerPort: 3306
+  servicePort: 3306
+  serviceType: ClusterIP
+
+tsFoodMapMongoService:
+  name: ts-food-map-mongo
+  label:
+    app: ts-food-map-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsConsignMongoService:
+  name: ts-consign-mongo
+  label:
+    app: ts-consign-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsConsignPriceMongoService:
+  name: ts-consign-price-mongo
+  label:
+    app: ts-consign-price-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsFoodMongoService:
+  name: ts-food-mongo
+  label:
+    app: ts-food-mongo
+  replicaCount: 1
+  containerPort: 27017
+  servicePort: 27017
+  serviceType: ClusterIP
+
+tsAdminBasicInfoService:
+  name: ts-admin-basic-info-service
+  label:
+    app: ts-admin-basic-info-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-admin-basic-info-service
+    tag: 0.1.0
+  containerPort: 18767
+  tcpSocketPort: 18767
+  servicePort: 18767
+  serviceType: ClusterIP
+
+tsAdminOrderService:
+  name: ts-admin-order-service
+  label:
+    app: ts-admin-order-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-admin-order-service
+    tag: 0.1.0
+  containerPort: 16112
+  tcpSocketPort: 16112
+  servicePort: 16112
+  serviceType: ClusterIP
+
+tsAdminRouteService:
+  name: ts-admin-route-service
+  label:
+    app: ts-admin-route-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-admin-route-service
+    tag: 0.1.0
+  containerPort: 16113
+  tcpSocketPort: 16113
+  servicePort: 16113
+  serviceType: ClusterIP
+
+tsAdminTravelService:
+  name: ts-admin-travel-service
+  label:
+    app: ts-admin-travel-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-admin-travel-service
+    tag: 0.1.0
+  containerPort: 16114
+  tcpSocketPort: 16114
+  servicePort: 16114
+  serviceType: ClusterIP
+
+tsAdminUserService:
+  name: ts-admin-user-service
+  label:
+    app: ts-admin-user-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-admin-user-service
+    tag: 0.1.0
+  containerPort: 16115
+  tcpSocketPort: 16115
+  servicePort: 16115
+  serviceType: ClusterIP
+
+tsAssuranceService:
+  name: ts-assurance-service
+  label:
+    app: ts-assurance-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-assurance-service
+    tag: latest
+  containerPort: 18888
+  tcpSocketPort: 18888
+  servicePort: 18888
+  serviceType: ClusterIP
+
+tsBasicService:
+  name: ts-basic-service
+  label:
+    app: ts-basic-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-basic-service
+    tag: 0.1.0
+  containerPort: 15680
+  tcpSocketPort: 15680
+  servicePort: 15680
+  serviceType: ClusterIP
+
+tsCancelService:
+  name: ts-cancel-service
+  label:
+    app: ts-cancel-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-cancel-service
+    tag: 0.1.0
+  containerPort: 18885
+  tcpSocketPort: 18885
+  servicePort: 18885
+  serviceType: ClusterIP
+
+tsConfigService:
+  name: ts-config-service
+  label:
+    app: ts-config-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-config-service
+    tag: latest
+  containerPort: 15679
+  tcpSocketPort: 15679
+  servicePort: 15679
+  serviceType: ClusterIP
+
+tsConsignPriceService:
+  name: ts-consign-price-service
+  label:
+    app: ts-consign-price-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-consign-price-service
+    tag: latest
+  containerPort: 16110
+  tcpSocketPort: 16110
+  servicePort: 16110
+  serviceType: ClusterIP
+
+tsConsignService:
+  name: ts-consign-service
+  label:
+    app: ts-consign-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-consign-service
+    tag: latest
+  containerPort: 16111
+  tcpSocketPort: 16111
+  servicePort: 16111
+  serviceType: ClusterIP
+
+tsContactsService:
+  name: ts-contacts-service
+  label:
+    app: ts-contacts-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-contacts-service
+    tag: latest
+  containerPort: 12347
+  tcpSocketPort: 12347
+  servicePort: 12347
+  serviceType: ClusterIP
+
+tsExecuteService:
+  name: ts-execute-service
+  label:
+    app: ts-execute-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-execute-service
+    tag: 0.1.0
+  containerPort: 12386
+  tcpSocketPort: 12386
+  servicePort: 12386
+  serviceType: ClusterIP
+
+tsFoodMapService:
+  name: ts-food-map-service
+  label:
+    app: ts-food-map-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-food-map-service
+    tag: latest
+  containerPort: 18855
+  tcpSocketPort: 18855
+  servicePort: 18855
+  serviceType: ClusterIP
+
+tsFoodService:
+  name: ts-food-service
+  label:
+    app: ts-food-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-food-service
+    tag: latest
+  containerPort: 18856
+  tcpSocketPort: 18856
+  servicePort: 18856
+  serviceType: ClusterIP
+
+tsInsidePaymentService:
+  name: ts-inside-payment-service
+  label:
+    app: ts-inside-payment-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-inside-payment-service
+    tag: latest
+  containerPort: 18673
+  tcpSocketPort: 18673
+  servicePort: 18673
+  serviceType: ClusterIP
+
+tsAuthService:
+  name: ts-auth-service
+  label:
+    app: ts-auth-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-auth-service
+    tag: latest
+  containerPort: 12340
+  tcpSocketPort: 12340
+  servicePort: 12340
+  serviceType: ClusterIP
+
+tsNewsService:
+  name: ts-news-service
+  label:
+    app: ts-news-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-news-service
+    tag: 0.1.0
+  containerPort: 12862
+  tcpSocketPort: 12862
+  servicePort: 12862
+  serviceType: ClusterIP
+
+tsNotificationService:
+  name: ts-notification-service
+  label:
+    app: ts-notification-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-notification-service
+    tag: 0.1.0
+  containerPort: 17853
+  tcpSocketPort: 17853
+  servicePort: 17853
+  serviceType: ClusterIP
+
+tsOrderOtherService:
+  name: ts-order-other-service
+  label:
+    app: ts-order-other-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-order-other-service
+    tag: latest
+  containerPort: 12032
+  tcpSocketPort: 12032
+  servicePort: 12032
+  serviceType: ClusterIP
+
+tsOrderService:
+  name: ts-order-service
+  label:
+    app: ts-order-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-order-service
+    tag: latest
+  containerPort: 12031
+  tcpSocketPort: 12031
+  servicePort: 12031
+  serviceType: ClusterIP
+
+tsPaymentService:
+  name: ts-payment-service
+  label:
+    app: ts-payment-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-payment-service
+    tag: latest
+  containerPort: 19001
+  tcpSocketPort: 19001
+  servicePort: 19001
+  serviceType: ClusterIP
+
+tsPreserveOtherService:
+  name: ts-preserve-other-service
+  label:
+    app: ts-preserve-other-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-preserve-other-service
+    tag: 0.1.0
+  containerPort: 14569
+  tcpSocketPort: 14569
+  servicePort: 14569
+  serviceType: ClusterIP
+
+tsPreserveService:
+  name: ts-preserve-service
+  label:
+    app: ts-preserve-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-preserve-service
+    tag: 0.1.0
+  containerPort: 14568
+  tcpSocketPort: 14568
+  servicePort: 14568
+  serviceType: ClusterIP
+
+tsPriceService:
+  name: ts-price-service
+  label:
+    app: ts-price-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-price-service
+    tag: latest
+  containerPort: 16579
+  tcpSocketPort: 16579
+  servicePort: 16579
+  serviceType: ClusterIP
+
+tsRebookService:
+  name: ts-rebook-service
+  label:
+    app: ts-rebook-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-rebook-service
+    tag: 0.1.0
+  containerPort: 18886
+  tcpSocketPort: 18886
+  servicePort: 18886
+  serviceType: ClusterIP
+
+tsRouteplanService:
+  name: ts-route-plan-service
+  label:
+    app: ts-route-plan-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-route-plan-service
+    tag: 0.1.0
+  containerPort: 14578
+  tcpSocketPort: 14578
+  servicePort: 14578
+  serviceType: ClusterIP
+
+tsRouteService:
+  name: ts-route-service
+  label:
+    app: ts-route-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-route-service
+    tag: latest
+  containerPort: 11178
+  tcpSocketPort: 11178
+  servicePort: 11178
+  serviceType: ClusterIP
+
+tsSeatService:
+  name: ts-seat-service
+  label:
+    app: ts-seat-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-seat-service
+    tag: 0.1.0
+  containerPort: 18898
+  tcpSocketPort: 18898
+  servicePort: 18898
+  serviceType: ClusterIP
+
+tsSecurityService:
+  name: ts-security-service
+  label:
+    app: ts-security-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-security-service
+    tag: 0.1.0
+  containerPort: 11188
+  tcpSocketPort: 11188
+  servicePort: 11188
+  serviceType: ClusterIP
+
+tsUserService:
+  name: ts-user-service
+  label:
+    app: ts-user-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-user-service
+    tag: latest
+  containerPort: 12342
+  tcpSocketPort: 12342
+  servicePort: 12342
+  serviceType: ClusterIP
+
+tsStationService:
+  name: ts-station-service
+  label:
+    app: ts-station-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-station-service
+    tag: latest
+  containerPort: 12345
+  tcpSocketPort: 12345
+  servicePort: 12345
+  serviceType: ClusterIP
+
+tsTicketService:
+  name: ts-ticket-office-service
+  label:
+    app: ts-ticket-office-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-ticket-office-service
+    tag: latest
+  containerPort: 16108
+  tcpSocketPort: 16108
+  servicePort: 16108
+  serviceType: ClusterIP
+
+tsTicketinfoService:
+  name: ts-ticketinfo-service
+  label:
+    app: ts-ticketinfo-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-ticketinfo-service
+    tag: 0.1.0
+  containerPort: 15681
+  tcpSocketPort: 15681
+  servicePort: 15681
+  serviceType: ClusterIP
+
+tsTrainService:
+  name: ts-train-service
+  label:
+    app: ts-train-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-train-service
+    tag: latest
+  containerPort: 14567
+  tcpSocketPort: 14567
+  servicePort: 14567
+  serviceType: ClusterIP
+
+tsTravel2Service:
+  name: ts-travel2-service
+  label:
+    app: ts-trave2-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-travel2-service
+    tag: latest
+  containerPort: 16346
+  tcpSocketPort: 16346
+  servicePort: 16346
+  serviceType: ClusterIP
+
+tsTravelPlanService:
+  name: ts-travel-plan-service
+  label:
+    app: ts-travel-plan-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-travel-plan-service
+    tag: 0.1.0
+  containerPort: 14322
+  tcpSocketPort: 14322
+  servicePort: 14322
+  serviceType: ClusterIP
+
+tsTravelService:
+  name: ts-travel-service
+  label:
+    app: ts-travel-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-travel-service
+    tag: latest
+  containerPort: 12346
+  tcpSocketPort: 12346
+  servicePort: 12346
+  serviceType: ClusterIP
+
+tsVerificationCodeService:
+  name: ts-verification-code-service
+  label:
+    app: ts-verification-code-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-verification-code-service
+    tag: 0.1.0
+  containerPort: 15678
+  tcpSocketPort: 15678
+  servicePort: 15678
+  serviceType: ClusterIP
+
+tsVoucherService:
+  name: ts-voucher-service
+  label:
+    app: ts-voucher-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-voucher-service
+    tag: latest
+  containerPort: 16101
+  tcpSocketPort: 16101
+  servicePort: 16101
+  serviceType: ClusterIP
+
+tsUiDashboard:
+  name: ts-ui-dashboard
+  label:
+    app: ts-ui-dashboard
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-ui-dashboard
+    tag: latest
+  containerPort: 8080
+  servicePort: 8080
+  nodePort: 32677
+  serviceType: NodePort
+
+tsAvatarService:
+  name: ts-avatar-service
+  label:
+    app: ts-avatar-service
+  replicaCount: 1
+  image:
+    repository: harbor.coe.com/train_app_prod/ts-avatar-service
+    tag: 0.1.0
+  containerPort: 17001
+  tcpSocketPort: 17001
+  servicePort: 17001
+  serviceType: ClusterIP
+
+  
