@@ -3535,4 +3535,54 @@ spec:
           periodSeconds: 10
 
           timeoutSeconds: 5 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-ui-dashboard
+  namespace: train-app
+spec:
+  selector:
+    matchLabels:
+      app: ts-ui-dashboard
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-ui-dashboard
+    spec:
+      containers:
+      - name: ts-ui-dashboard
+        image: $REGISTRY_HOST/ts-ui-dashboard:$BUILD_NUMBER
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-avatar-service
+  namespace: train-app
+spec:
+  selector:
+    matchLabels:
+      app: ts-avatar-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-avatar-service
+    spec:
+      containers:
+      - name: ts-avatar-service
+        image: $REGISTRY_HOST/ts-avatar-service:0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 17001
+        readinessProbe:
+          tcpSocket:
+            port: 17001
+          initialDelaySeconds: 160
+          periodSeconds: 10
+          timeoutSeconds: 5
 
