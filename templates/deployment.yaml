@@ -2,12 +2,757 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: ts-admin-basic-info-service
+    app: ts-user-mongo
     tag: #Change
-  name: ts-admin-basic-info-service
+  name: ts-user-mongo
   namespace: {{ .Values.namespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-user-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-user-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-user-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-auth-mongo
+    tag: #Change
+  name: ts-auth-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-auth-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-auth-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-auth-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-route-mongo
+    tag: #Change
+  name: ts-route-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-route-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-route-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-route-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-contacts-mongo
+    tag: #Change
+  name: ts-contacts-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-contacts-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-contacts-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-contacts-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-order-mongo
+    tag: #Change
+  name: ts-order-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-order-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-order-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-order-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-order-other-mongo
+    tag: #Change
+  name: ts-order-other-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-order-other-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-order-other-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-order-other-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-config-mongo
+    tag: #Change
+  name: ts-config-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-config-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-config-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-config-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-station-mongo
+    tag: #Change
+  name: ts-station-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-station-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-station-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-station-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-train-mongo
+    tag: #Change
+  name: ts-train-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-train-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-train-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-train-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-travel-mongo
+    tag: #Change
+  name: ts-travel-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-travel-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-travel-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-travel-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-travel2-mongo
+    tag: #Change
+  name: ts-travel2-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-travel2-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-travel2-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-travel2-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-price-mongo
+    tag: #Change
+  name: ts-price-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-price-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-price-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-price-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-security-mongo
+    tag: #Change
+  name: ts-security-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-security-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-security-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-security-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-inside-payment-mongo
+    tag: #Change
+  name: ts-inside-payment-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-inside-payment-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-inside-payment-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-inside-payment-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-payment-mongo
+    tag: #Change
+  name: ts-payment-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-payment-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-payment-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-payment-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-assurance-mongo
+    tag: #Change
+  name: ts-assurance-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-assurance-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-assurance-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-assurance-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-ticket-office-mongo
+    tag: #Change
+  name: ts-ticket-office-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-ticket-office-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-ticket-office-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-ticket-office-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-voucher-mysql
+    tag: #Change
+  name: ts-voucher-mysql
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-voucher-mysql
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-voucher-mysql
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-voucher-mysql
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-food-map-mongo
+    tag: #Change
+  name: ts-food-map-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-food-map-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-food-map-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-food-map-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-consign-mongo
+    tag: #Change
+  name: ts-consign-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-consign-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-consign-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-consign-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-consign-price-mongo
+    tag: #Change
+  name: ts-consign-price-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-consign-price-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-consign-price-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-consign-price-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-food-mongo
+    tag: #Change
+  name: ts-food-mongo
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: ts-food-mongo
+      tag: #Change
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ts-food-mongo
+        tag: #Change
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: ts-food-mongo
+        resources:
+{{ toYaml .Values.resources | indent 12 }} 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ts-admin-basic-info-service
+    tag: #Change
+  name: ts-admin-basic-info-service
+  namespace: {{ .Values.appNamespace.name }} 
+spec:
+  replicas: {{ .Values.tsAdminBasicInfoService.replicaCount }} 
   selector:
     matchLabels:
       app: ts-admin-basic-info-service
@@ -24,7 +769,7 @@ spec:
         tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+      - image: {{ .Values.tsAdminBasicInfoService.image.repository }}:{{ .Values.tsAdminBasicInfoService.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: ts-admin-basic-info-service
         resources:
@@ -38,7 +783,7 @@ metadata:
     app: ts-admin-order-service
     tag: #Change
   name: ts-admin-order-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -71,7 +816,7 @@ metadata:
     app: ts-admin-route-service
     tag: #Change
   name: ts-admin-route-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -105,7 +850,7 @@ metadata:
     app: ts-admin-travel-service
     tag: #Change
   name: ts-admin-travel-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -138,7 +883,7 @@ metadata:
     app: ts-admin-user-service
     tag: #Change
   name: ts-admin-user-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -172,7 +917,7 @@ metadata:
     app: ts-assurance-service
     tag: #Change
   name: ts-assurance-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -206,7 +951,7 @@ metadata:
     app: ts-basic-service
     tag: #Change
   name: ts-basic-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -240,7 +985,7 @@ metadata:
     app: ts-cancel-service
     tag: #Change
   name: ts-cancel-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -274,7 +1019,7 @@ metadata:
     app: ts-config-service
     tag: #Change
   name: ts-config-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -308,7 +1053,7 @@ metadata:
     app: ts-consign-price-service
     tag: #Change
   name: ts-consign-price-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -342,7 +1087,7 @@ metadata:
     app: ts-consign-service
     tag: #Change
   name: ts-consign-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -376,7 +1121,7 @@ metadata:
     app: ts-contacts-service
     tag: #Change
   name: ts-contacts-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -410,7 +1155,7 @@ metadata:
     app: ts-execute-service
     tag: #Change
   name: ts-execute-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -444,7 +1189,7 @@ metadata:
     app: ts-food-map-service
     tag: #Change
   name: ts-food-map-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -478,7 +1223,7 @@ metadata:
     app: ts-food-service
     tag: #Change
   name: ts-food-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -512,7 +1257,7 @@ metadata:
     app: ts-inside-payment-service
     tag: #Change
   name: ts-inside-payment-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -546,7 +1291,7 @@ metadata:
     app: ts-auth-service
     tag: #Change
   name: ts-auth-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -580,7 +1325,7 @@ metadata:
     app: ts-news-service
     tag: #Change
   name: ts-news-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -614,7 +1359,7 @@ metadata:
     app: ts-notification-service
     tag: #Change
   name: ts-notification-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -648,7 +1393,7 @@ metadata:
     app: ts-order-other-service
     tag: #Change
   name: ts-order-other-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -682,7 +1427,7 @@ metadata:
     app: ts-order-service
     tag: #Change
   name: ts-order-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -716,7 +1461,7 @@ metadata:
     app: ts-payment-service
     tag: #Change
   name: ts-payment-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -751,7 +1496,7 @@ metadata:
     app: ts-preserve-other-service
     tag: #Change
   name: ts-preserve-other-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -785,7 +1530,7 @@ metadata:
     app: ts-preserve-service
     tag: #Change
   name: ts-preserve-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -819,7 +1564,7 @@ metadata:
     app: ts-price-service
     tag: #Change
   name: ts-price-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -854,7 +1599,7 @@ metadata:
     app: ts-rebook-service
     tag: #Change
   name: ts-rebook-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -888,7 +1633,7 @@ metadata:
     app: ts-route-plan-service
     tag: #Change
   name: ts-route-plan-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -922,7 +1667,7 @@ metadata:
     app: ts-route-service
     tag: #Change
   name: ts-route-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -955,7 +1700,7 @@ metadata:
     app: ts-seat-service
     tag: #Change
   name: ts-seat-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -990,7 +1735,7 @@ metadata:
     app: ts-security-service
     tag: #Change
   name: ts-security-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1024,7 +1769,7 @@ metadata:
     app: ts-user-service
     tag: #Change
   name: ts-user-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1059,7 +1804,7 @@ metadata:
     app: ts-station-service
     tag: #Change
   name: ts-station-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1093,7 +1838,7 @@ metadata:
     app: ts-ticket-office-service
     tag: #Change
   name: ts-ticket-office-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1127,7 +1872,7 @@ metadata:
     app: ts-ticketinfo-service
     tag: #Change
   name: ts-ticketinfo-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1161,7 +1906,7 @@ metadata:
     app: ts-train-service
     tag: #Change
   name: ts-train-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1195,7 +1940,7 @@ metadata:
     app: ts-travel2-service
     tag: #Change
   name: ts-travel2-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1229,7 +1974,7 @@ metadata:
     app: ts-travel-plan-service
     tag: #Change
   name: ts-travel-plan-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1263,7 +2008,7 @@ metadata:
     app: ts-travel-service
     tag: #Change
   name: ts-travel-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1297,7 +2042,7 @@ metadata:
     app: ts-verification-code-service
     tag: #Change
   name: ts-verification-code-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1331,7 +2076,7 @@ metadata:
     app: ts-voucher-service
     tag: #Change
   name: ts-voucher-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1365,7 +2110,7 @@ metadata:
     app: ts-ui-dashboard
     tag: #Change
   name: ts-ui-dashboard
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
@@ -1399,7 +2144,7 @@ metadata:
     app: ts-avatar-service
     tag: #Change
   name: ts-avatar-service
-  namespace: {{ .Values.namespace.name }} 
+  namespace: {{ .Values.appNamespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
