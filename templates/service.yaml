@@ -1,1278 +1,1405 @@
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-user-mongo
-    tag: #Change
-  name: ts-user-mongo
-  namespace: {{ .Values.namespace.name }} 
+  name: ts-user-mongo 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017
   selector:
-    app: ts-user-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
+   app: ts-user-mongo 
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-auth-mongo
-    tag: #Change
   name: ts-auth-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017
   selector:
-    app: ts-auth-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
+   app: ts-auth-mongo
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-route-mongo
-    tag: #Change
   name: ts-route-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017  
   selector:
-    app: ts-route-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
+   app: ts-route-mongo
 
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-contacts-mongo
-    tag: #Change
   name: ts-contacts-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017  
   selector:
-    app: ts-contacts-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
-
+   app: ts-contacts-mongo
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-order-mongo
-    tag: #Change
   name: ts-order-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017  
   selector:
-    app: ts-order-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
+   app: ts-order-mongo
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-order-other-mongo
-    tag: #Change
   name: ts-order-other-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017  
   selector:
-    app: ts-order-other-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
+   app: ts-order-other-mongo
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-config-mongo
-    tag: #Change
   name: ts-config-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-config-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
+   app: ts-config-mongo    
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-station-mongo
-    tag: #Change
   name: ts-station-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-station-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
+   app: ts-station-mongo   
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-train-mongo
-    tag: #Change
   name: ts-train-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-train-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
+   app: ts-train-mongo
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-travel-mongo
-    tag: #Change
   name: ts-travel-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-travel-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
+   app: ts-travel-mongo  
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-travel2-mongo
-    tag: #Change
   name: ts-travel2-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-travel2-mongo
-    tag: #Change
-  type: {{ .Values.service.type }} 
+   app: ts-travel2-mongo
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-price-mongo
-    tag: #Change
   name: ts-price-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-price-mongo
-    tag: #Change
-  type: {{ .Values.service.type }}
+   app: ts-price-mongo    
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-security-mongo
-    tag: #Change
   name: ts-security-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017  
   selector:
-    app: ts-security-mongo
-    tag: #Change
-  type: {{ .Values.service.type }}
+   app: ts-security-mongo  
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-inside-payment-mongo
-    tag: #Change
   name: ts-inside-payment-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-inside-payment-mongo
-    tag: #Change
-  type: {{ .Values.service.type }}
+   app: ts-inside-payment-mongo
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-payment-mongo
-    tag: #Change
   name: ts-payment-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-payment-mongo
-    tag: #Change
-  type: {{ .Values.service.type }}
-
+   app: ts-payment-mongo
+  
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-assurance-mongo
-    tag: #Change
   name: ts-assurance-mongo
-  namespace: {{ .Values.namespace.name }} 
-spec:
+  namespace: train-mongo
+spec:  
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-assurance-mongo
-    tag: #Change
-  type: {{ .Values.service.type }}
-
+   app: ts-assurance-mongo
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-ticket-office-mongo
-    tag: #Change
   name: ts-ticket-office-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-ticket-office-mongo
-    tag: #Change
-  type: {{ .Values.service.type }}
+   app: ts-ticket-office-mongo
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-voucher-mysql
-    tag: #Change
   name: ts-voucher-mysql
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 3306  
   selector:
-    app: ts-voucher-mysql
-    tag: #Change
-  type: {{ .Values.service.type }}
+   app: ts-voucher-mysql
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-food-map-mongo
-    tag: #Change
   name: ts-food-map-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017  
   selector:
-    app: ts-food-map-mongo
-    tag: #Change
-  type: {{ .Values.service.type }}
+   app: ts-food-map-mongo
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-consign-mongo
-    tag: #Change
   name: ts-consign-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-consign-mongo
-    tag: #Change
-  type: {{ .Values.service.type }}
+   app: ts-consign-mongo
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-consign-price-mongo
-    tag: #Change
   name: ts-consign-price-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-consign-price-mongo
-    tag: #Change
-  type: {{ .Values.service.type }}
+   app: ts-consign-price-mongo
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-food-mongo
-    tag: #Change
   name: ts-food-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 27017    
   selector:
-    app: ts-food-mongo
-    tag: #Change
-  type: {{ .Values.service.type }}
-
+   app: ts-food-mongo
 ---
-
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-admin-basic-info-service
-    tag: #Change
+
   name: ts-admin-basic-info-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 18767
+
   selector:
-    app: ts-admin-basic-info-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-admin-basic-info-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-admin-order-service
-    tag: #Change
+
   name: ts-admin-order-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 16112
+
   selector:
-    app: ts-admin-order-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-admin-order-service
+
+
 
 ---
+
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-admin-route-service
-    tag: #Change
+
   name: ts-admin-route-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 16113
+
   selector:
-    app: ts-admin-route-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-admin-route-service
+
+
 
 ---
+
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-admin-travel-service
-    tag: #Change
+
   name: ts-admin-travel-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 16114
+
   selector:
-    app: ts-admin-travel-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-admin-travel-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-admin-user-service
-    tag: #Change
+
   name: ts-admin-user-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 16115
+
   selector:
-    app: ts-admin-user-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-admin-user-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-assurance-service
-    tag: #Change
+
   name: ts-assurance-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 18888
+
   selector:
-    app: ts-assurance-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-assurance-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-basic-service
-    tag: #Change
+
   name: ts-basic-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 15680
+
   selector:
-    app: ts-basic-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-basic-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-cancel-service
-    tag: #Change
+
   name: ts-cancel-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 18885
+
   selector:
-    app: ts-cancel-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-cancel-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-config-service
-    tag: #Change
+
   name: ts-config-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 15679
+
   selector:
-    app: ts-config-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-config-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-consign-price-service
-    tag: #Change
+
   name: ts-consign-price-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 16110
+
   selector:
-    app: ts-consign-price-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-consign-price-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-consign-service
-    tag: #Change
+
   name: ts-consign-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 16111
+
   selector:
-    app: ts-consign-service
-    tag: #Change
-  type: {{ .Values.service.type }} 
+
+   app: ts-consign-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-contacts-service
-    tag: #Change
+
   name: ts-contacts-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 12347
+
   selector:
-    app: ts-contacts-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-contacts-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-execute-service
-    tag: #Change
+
   name: ts-execute-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 12386
+
   selector:
-    app: ts-execute-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-execute-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-food-map-service
-    tag: #Change
+
   name: ts-food-map-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 18855
+
   selector:
-    app: ts-food-map-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-food-map-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-food-service
-    tag: #Change
+
   name: ts-food-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 18856
+
   selector:
-    app: ts-food-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-food-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-inside-payment-service
-    tag: #Change
+
   name: ts-inside-payment-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 18673
+
   selector:
-    app: ts-inside-payment-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-inside-payment-service
+
 
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-user-service
-    tag: #Change
+
   name: ts-user-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 12342
+
   selector:
-    app: ts-user-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-user-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-notification-service
-    tag: #Change
+
   name: ts-notification-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 17853
+
   selector:
-    app: ts-notification-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-notification-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-news-service
-    tag: #Change
+
   name: ts-news-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 12862
+
   selector:
-    app: ts-news-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-news-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-order-other-service
-    tag: #Change
+
   name: ts-order-other-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 12032
+
   selector:
-    app: ts-order-other-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-order-other-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-order-service
-    tag: #Change
+
   name: ts-order-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 12031
+
   selector:
-    app: ts-order-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-order-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-payment-service
-    tag: #Change
+
   name: ts-payment-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 19001
+
   selector:
-    app: ts-payment-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-payment-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-preserve-other-service
-    tag: #Change
+
   name: ts-preserve-other-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 14569
+
   selector:
-    app: ts-preserve-other-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-preserve-other-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-preserve-service
-    tag: #Change
+
   name: ts-preserve-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 14568
+
   selector:
-    app: ts-preserve-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-preserve-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-price-service
-    tag: #Change
+
   name: ts-price-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 16579
+
   selector:
-    app: ts-price-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-price-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-rebook-service
-    tag: #Change
+
   name: ts-rebook-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 18886
+
   selector:
-    app: ts-rebook-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-rebook-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-route-plan-service
-    tag: #Change
+
   name: ts-route-plan-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 14578
+
   selector:
-    app: ts-route-plan-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-route-plan-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-route-service
-    tag: #Change
+
   name: ts-route-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 11178
+
   selector:
-    app: ts-route-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-route-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-seat-service
-    tag: #Change
+
   name: ts-seat-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 18898
+
   selector:
-    app: ts-seat-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-seat-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-security-service
-    tag: #Change
+
   name: ts-security-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 11188
+
   selector:
-    app: ts-security-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-security-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-auth-service
-    tag: #Change
+
   name: ts-auth-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
+  type: LoadBalancer
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 12340
+
   selector:
-    app: ts-auth-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-auth-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-station-service
-    tag: #Change
+
   name: ts-station-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 12345
+
   selector:
-    app: ts-station-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-station-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-ticket-office-service
-    tag: #Change
+
   name: ts-ticket-office-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 16108
+
   selector:
-    app: ts-ticket-office-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-ticket-office-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-ticketinfo-service
-    tag: #Change
+
   name: ts-ticketinfo-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 15681
+
   selector:
-    app: ts-ticketinfo-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-ticketinfo-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-train-service
-    tag: #Change
+
   name: ts-train-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 14567
+
   selector:
-    app: ts-train-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-train-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-travel2-service
-    tag: #Change
+
   name: ts-travel2-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 16346
+
   selector:
-    app: ts-travel2-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-travel2-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-travel-plan-service
-    tag: #Change
+
   name: ts-travel-plan-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 14322
+
   selector:
-    app: ts-travel-plan-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-travel-plan-service
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-travel-service
-    tag: #Change
+
   name: ts-travel-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
+
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+
+    - name: http
+
+      port: 12346
+
   selector:
-    app: ts-travel-service
-    tag: #Change
-  type: {{ .Values.service.type }}
+
+   app: ts-travel-service
+
+
+
+
 
 ---
 
+
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
-  labels:
-    app: ts-verification-code-service
-    tag: #Change
+
   name: ts-verification-code-service
-  namespace: {{ .Values.appNamespace.name }} 
-spec:
-  ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
-  selector:
-    app: ts-verification-code-service
-    tag: #Change
-  type: {{ .Values.service.type }}
 
+  namespace: train-app
+
+spec:
+
+  ports:
+
+    - name: http
+
+      port: 15678
+
+  selector:
+   app: ts-verification-code-service
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: ts-voucher-service
-    tag: #Change
   name: ts-voucher-service
-  namespace: {{ .Values.appNamespace.name }} 
+  namespace: train-app
 spec:
   ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
+    - name: http
+      port: 16101
   selector:
-    app: ts-voucher-service
-    tag: #Change
-  type: {{ .Values.service.type }}
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: ts-ui-dashboard
-    tag: #Change
-  name: ts-ui-dashboard
-  namespace: {{ .Values.appNamespace.name }} 
-spec:
-  ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
-  selector:
-    app: ts-ui-dashboard
-    tag: #Change
-  type: {{ .Values.service.type }}
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: ts-avatar-service
-    tag: #Change
-  name: ts-avatar-service
-  namespace: {{ .Values.appNamespace.name }} 
-spec:
-  ports:
-  - port: {{ .Values.service.port }} 
-    protocol: TCP
-    targetPort: {{ .Values.service.port }}
-  selector:
-    app: ts-avatar-service
-    tag: #Change
-  type: {{ .Values.service.type }}
-
----
+   app: ts-voucher-service
 
