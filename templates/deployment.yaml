@@ -1,2170 +1,3538 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-user-mongo
-    tag: #Change
   name: ts-user-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-user-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-user-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-user-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
-
+      - name: ts-user-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"       
+        ports:
+        - containerPort: 27017
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-auth-mongo
-    tag: #Change
   name: ts-auth-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-auth-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-auth-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-auth-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
-
+      - name: ts-auth-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-route-mongo
-    tag: #Change
   name: ts-route-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-route-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-route-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-route-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
-
+      - name: ts-route-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-contacts-mongo
-    tag: #Change
   name: ts-contacts-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-contacts-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-contacts-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-contacts-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+      - name: ts-contacts-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-order-mongo
-    tag: #Change
   name: ts-order-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-order-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-order-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-order-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+      - name: ts-order-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-order-other-mongo
-    tag: #Change
   name: ts-order-other-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-order-other-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-order-other-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-order-other-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+      - name: ts-order-other-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-config-mongo
-    tag: #Change
   name: ts-config-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-config-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-config-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-config-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
-
+      - name: ts-config-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-station-mongo
-    tag: #Change
   name: ts-station-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-station-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-station-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-station-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+      - name: ts-station-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-train-mongo
-    tag: #Change
   name: ts-train-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-train-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-train-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-train-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-train-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-travel-mongo
-    tag: #Change
   name: ts-travel-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-travel-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-travel-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-travel-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-travel-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-travel2-mongo
-    tag: #Change
   name: ts-travel2-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-travel2-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-travel2-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-travel2-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-travel2-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-price-mongo
-    tag: #Change
   name: ts-price-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-price-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-price-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-price-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-price-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-security-mongo
-    tag: #Change
   name: ts-security-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-security-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-security-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-security-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-security-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-inside-payment-mongo
-    tag: #Change
   name: ts-inside-payment-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-inside-payment-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-inside-payment-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-inside-payment-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-inside-payment-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-payment-mongo
-    tag: #Change
   name: ts-payment-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-payment-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-payment-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-payment-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-payment-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-assurance-mongo
-    tag: #Change
   name: ts-assurance-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-assurance-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-assurance-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-assurance-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-assurance-mongo
+        image: mongo:latest
+        imagePullPolicy: IfNotPresent
+        command:
+        - "mongod"
+        - "--bind_ip"
+        - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-ticket-office-mongo
-    tag: #Change
   name: ts-ticket-office-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-ticket-office-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-ticket-office-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-ticket-office-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-ticket-office-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-voucher-mysql
-    tag: #Change
   name: ts-voucher-mysql
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-voucher-mysql
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-voucher-mysql
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-voucher-mysql
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-voucher-mysql
+        image: mysql:5.6.35
+        imagePullPolicy: IfNotPresent      
+        env:
+        # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+        ports:
+        - containerPort: 3306
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-food-map-mongo
-    tag: #Change
   name: ts-food-map-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-food-map-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-food-map-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-food-map-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-food-map-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-consign-mongo
-    tag: #Change
   name: ts-consign-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-consign-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-consign-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-consign-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-consign-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-consign-price-mongo
-    tag: #Change
   name: ts-consign-price-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-consign-price-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-consign-price-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-consign-price-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-consign-price-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-food-mongo
-    tag: #Change
   name: ts-food-mongo
-  namespace: {{ .Values.namespace.name }} 
+  namespace: train-mongo
 spec:
-  replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: ts-food-mongo
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+  replicas: 1
   template:
     metadata:
       labels:
         app: ts-food-mongo
-        tag: #Change
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-food-mongo
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+      - name: ts-food-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-user-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-user-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-user-mongo
+    spec:
+      containers:
+      - name: ts-user-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"       
+        ports:
+        - containerPort: 27017
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-auth-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-auth-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-auth-mongo
+    spec:
+      containers:
+      - name: ts-auth-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-route-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-route-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-route-mongo
+    spec:
+      containers:
+      - name: ts-route-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-contacts-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-contacts-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-contacts-mongo
+    spec:
+      containers:
+      - name: ts-contacts-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: ts-admin-basic-info-service
-    tag: #Change
+  name: ts-order-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-order-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-order-mongo
+    spec:
+      containers:
+      - name: ts-order-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-order-other-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-order-other-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-order-other-mongo
+    spec:
+      containers:
+      - name: ts-order-other-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-config-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-config-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-config-mongo
+    spec:
+      containers:
+      - name: ts-config-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-station-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-station-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-station-mongo
+    spec:
+      containers:
+      - name: ts-station-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-train-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-train-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-train-mongo
+    spec:
+      containers:
+      - name: ts-train-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-travel-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-travel-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-travel-mongo
+    spec:
+      containers:
+      - name: ts-travel-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-travel2-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-travel2-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-travel2-mongo
+    spec:
+      containers:
+      - name: ts-travel2-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-price-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-price-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-price-mongo
+    spec:
+      containers:
+      - name: ts-price-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-security-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-security-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-security-mongo
+    spec:
+      containers:
+      - name: ts-security-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-inside-payment-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-inside-payment-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-inside-payment-mongo
+    spec:
+      containers:
+      - name: ts-inside-payment-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-payment-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-payment-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-payment-mongo
+    spec:
+      containers:
+      - name: ts-payment-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-assurance-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-assurance-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-assurance-mongo
+    spec:
+      containers:
+      - name: ts-assurance-mongo
+        image: mongo:latest
+        imagePullPolicy: IfNotPresent
+        command:
+        - "mongod"
+        - "--bind_ip"
+        - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-ticket-office-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-ticket-office-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-ticket-office-mongo
+    spec:
+      containers:
+      - name: ts-ticket-office-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-voucher-mysql
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-voucher-mysql
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-voucher-mysql
+    spec:
+      containers:
+      - name: ts-voucher-mysql
+        image: mysql:5.6.35
+        imagePullPolicy: IfNotPresent      
+        env:
+        # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+        ports:
+        - containerPort: 3306
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-food-map-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-food-map-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-food-map-mongo
+    spec:
+      containers:
+      - name: ts-food-map-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-consign-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-consign-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-consign-mongo
+    spec:
+      containers:
+      - name: ts-consign-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-consign-price-mongo
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-consign-price-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-consign-price-mongo
+    spec:
+      containers:
+      - name: ts-consign-price-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-food-vs
+  namespace: train-mongo
+spec:
+  selector:
+    matchLabels:
+      app: ts-food-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ts-food-mongo
+    spec:
+      containers:
+      - name: ts-food-mongo
+        image: $REGISTRY_HOST/mongo
+        imagePullPolicy: IfNotPresent
+        command:
+          - "mongod"
+          - "--bind_ip"
+          - "0.0.0.0"        
+        ports:
+        - containerPort: 27017
+---
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
   name: ts-admin-basic-info-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.tsAdminBasicInfoService.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-admin-basic-info-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-admin-basic-info-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.tsAdminBasicInfoService.image.repository }}:{{ .Values.tsAdminBasicInfoService.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-admin-basic-info-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+
+      - name: ts-admin-basic-info-service
+
+        image: $REGISTRY_HOST/ts-admin-basic-info-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 18767
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 18767
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5   
 
 ---
+
+
+
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-admin-order-service
-    tag: #Change
+
   name: ts-admin-order-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-admin-order-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-admin-order-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-admin-order-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+
+      - name: ts-admin-order-service
+
+        image: $REGISTRY_HOST/ts-admin-order-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 16112
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 16112
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
+
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-admin-route-service
-    tag: #Change
+
   name: ts-admin-route-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-admin-route-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-admin-route-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-admin-route-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+
+      - name: ts-admin-route-service
+
+        image: $REGISTRY_HOST/ts-admin-route-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 16113
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 16113
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-admin-travel-service
-    tag: #Change
+
   name: ts-admin-travel-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-admin-travel-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-admin-travel-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-admin-travel-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+
+      - name: ts-admin-travel-service
+
+        image: $REGISTRY_HOST/ts-admin-travel-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 16114
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 16114
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
+
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-admin-user-service
-    tag: #Change
+
   name: ts-admin-user-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-admin-user-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-admin-user-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-admin-user-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+
+      - name: ts-admin-user-service
+
+        image: $REGISTRY_HOST/ts-admin-user-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 16115
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 16115
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-assurance-service
-    tag: #Change
+
   name: ts-assurance-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-assurance-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-assurance-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-assurance-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+
+      - name: ts-assurance-service
+
+        image: $REGISTRY_HOST/ts-assurance-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 18888
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 18888
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-basic-service
-    tag: #Change
+
   name: ts-basic-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-basic-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-basic-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-basic-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+
+      - name: ts-basic-service
+
+        image: $REGISTRY_HOST/ts-basic-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 15680
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 15680
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-cancel-service
-    tag: #Change
+
   name: ts-cancel-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-cancel-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-cancel-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-cancel-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
+
+      - name: ts-cancel-service
+
+        image: $REGISTRY_HOST/ts-cancel-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 18885
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 18885
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-config-service
-    tag: #Change
+
   name: ts-config-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-config-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-config-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-config-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-config-service
+
+        image: $REGISTRY_HOST/ts-config-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 15679
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 15679
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-consign-price-service
-    tag: #Change
+
   name: ts-consign-price-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-consign-price-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-consign-price-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-consign-price-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-consign-price-service
+
+        image: $REGISTRY_HOST/ts-consign-price-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 16110
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 16110
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-consign-service
-    tag: #Change
+
   name: ts-consign-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-consign-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-consign-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-consign-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-consign-service
+
+        image: $REGISTRY_HOST/ts-consign-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 16111
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 16111
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-contacts-service
-    tag: #Change
+
   name: ts-contacts-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-contacts-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-contacts-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-contacts-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-contacts-service
+
+        image: $REGISTRY_HOST/ts-contacts-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 12347
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 12347
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-execute-service
-    tag: #Change
+
   name: ts-execute-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-execute-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-execute-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-execute-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-execute-service
+
+        image: $REGISTRY_HOST/ts-execute-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 12386
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 12386
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-food-map-service
-    tag: #Change
+
   name: ts-food-map-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-food-map-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-food-map-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-food-map-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-food-map-service
+
+        image: $REGISTRY_HOST/ts-food-map-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 18855
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 18855
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-food-service
-    tag: #Change
+
   name: ts-food-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-food-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-food-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-food-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-food-service
+
+        image: $REGISTRY_HOST/ts-food-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 18856
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 18856
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-inside-payment-service
-    tag: #Change
+
   name: ts-inside-payment-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-inside-payment-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-inside-payment-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-inside-payment-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-inside-payment-service
+
+        image: $REGISTRY_HOST/ts-inside-payment-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 18673
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 18673
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-auth-service
-    tag: #Change
+
   name: ts-auth-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-auth-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-auth-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-auth-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-auth-service
+
+        image: $REGISTRY_HOST/ts-auth-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 12340
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 12340
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-news-service
-    tag: #Change
+
   name: ts-news-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-news-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-news-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-news-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-news-service
+
+        image: $REGISTRY_HOST/ts-news-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 12862
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 12862
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-notification-service
-    tag: #Change
+
   name: ts-notification-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-notification-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-notification-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-notification-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-notification-service
+
+        image: $REGISTRY_HOST/ts-notification-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 17853
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 17853
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-order-other-service
-    tag: #Change
+
   name: ts-order-other-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-order-other-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-order-other-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-order-other-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-order-other-service
+
+        image: $REGISTRY_HOST/ts-order-other-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 12032
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 12032
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-order-service
-    tag: #Change
+
   name: ts-order-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-order-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-order-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-order-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-order-service
+
+        image: $REGISTRY_HOST/ts-order-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 12031
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 12031
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-payment-service
-    tag: #Change
+
   name: ts-payment-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-payment-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-payment-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-payment-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-payment-service
+
+        image: $REGISTRY_HOST/ts-payment-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 19001
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 19001
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
 
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-preserve-other-service
-    tag: #Change
+
   name: ts-preserve-other-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-preserve-other-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-preserve-other-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-preserve-other-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-preserve-other-service
+
+        image: $REGISTRY_HOST/ts-preserve-other-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 14569
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 14569
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-preserve-service
-    tag: #Change
+
   name: ts-preserve-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-preserve-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-preserve-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-preserve-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-preserve-service
+
+        image: $REGISTRY_HOST/ts-preserve-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 14568
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 14568
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-price-service
-    tag: #Change
+
   name: ts-price-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-price-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-price-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-price-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-price-service
+
+        image: $REGISTRY_HOST/ts-price-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 16579
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 16579
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
 
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-rebook-service
-    tag: #Change
+
   name: ts-rebook-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-rebook-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-rebook-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-rebook-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-rebook-service
+
+        image: $REGISTRY_HOST/ts-rebook-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 18886
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 18886
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-route-plan-service
-    tag: #Change
+
   name: ts-route-plan-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-route-plan-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-route-plan-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-route-plan-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-route-plan-service
+
+        image: $REGISTRY_HOST/ts-route-plan-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 14578
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 14578
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-route-service
-    tag: #Change
+
   name: ts-route-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-route-service
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-route-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-route-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-route-service
+
+        image: $REGISTRY_HOST/ts-route-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 11178
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 11178
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-seat-service
-    tag: #Change
+
   name: ts-seat-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-seat-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-seat-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-seat-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-seat-service
+
+        image: $REGISTRY_HOST/ts-seat-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 18898
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 18898
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
 
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-security-service
-    tag: #Change
+
   name: ts-security-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-security-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-security-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-security-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-security-service
+
+        image: $REGISTRY_HOST/ts-security-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 11188
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 11188
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-user-service
-    tag: #Change
+
   name: ts-user-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-user-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-user-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-user-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-user-service
+
+        image: $REGISTRY_HOST/ts-user-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 12342
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 12342
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
 
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-station-service
-    tag: #Change
+
   name: ts-station-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-station-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-station-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-station-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-station-service
+
+        image: $REGISTRY_HOST/ts-station-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 12345
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 12345
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-ticket-office-service
-    tag: #Change
+
   name: ts-ticket-office-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-ticket-office-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
-        app: ts-ticket-office-service
-        tag: #Change
+
+        app: ts-ticket-office-service 
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-ticket-office-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-ticket-office-service
+
+        image: $REGISTRY_HOST/ts-ticket-office-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 16108
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 16108
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-ticketinfo-service
-    tag: #Change
+
   name: ts-ticketinfo-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-ticketinfo-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-ticketinfo-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-ticketinfo-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-ticketinfo-service
+
+        image: $REGISTRY_HOST/ts-ticketinfo-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 15681
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 15681
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-train-service
-    tag: #Change
+
   name: ts-train-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-train-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-train-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-train-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-train-service
+
+        image: $REGISTRY_HOST/ts-train-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 14567
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 14567
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-travel2-service
-    tag: #Change
+
   name: ts-travel2-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-travel2-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-travel2-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-travel2-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-travel2-service
+
+        image: $REGISTRY_HOST/ts-travel2-service:latest
+
+        ports:
+
+        - containerPort: 16346
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 16346
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-travel-plan-service
-    tag: #Change
+
   name: ts-travel-plan-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-travel-plan-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-travel-plan-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-travel-plan-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-travel-plan-service
+
+        image: $REGISTRY_HOST/ts-travel-plan-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 14322
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 14322
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-travel-service
-    tag: #Change
+
   name: ts-travel-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-travel-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-travel-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-travel-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-travel-service
+
+        image: $REGISTRY_HOST/ts-travel-service:latest
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 12346
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 12346
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-verification-code-service
-    tag: #Change
+
   name: ts-verification-code-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-verification-code-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-verification-code-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-verification-code-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+
+      - name: ts-verification-code-service
+
+        image: $REGISTRY_HOST/ts-verification-code-service:0.1.0
+
+        imagePullPolicy: IfNotPresent
+
+        ports:
+
+        - containerPort: 15678
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 15678
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5
 
 ---
 
+
+
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  labels:
-    app: ts-voucher-service
-    tag: #Change
+
   name: ts-voucher-service
-  namespace: {{ .Values.appNamespace.name }} 
+
+  namespace: train-app
+
 spec:
-  replicas: {{ .Values.replicaCount }} 
+
   selector:
+
     matchLabels:
+
       app: ts-voucher-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+
+  replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: ts-voucher-service
-        tag: #Change
+
     spec:
+
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-voucher-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
 
----
+      - name: ts-voucher-service
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: ts-ui-dashboard
-    tag: #Change
-  name: ts-ui-dashboard
-  namespace: {{ .Values.appNamespace.name }} 
-spec:
-  replicas: {{ .Values.replicaCount }} 
-  selector:
-    matchLabels:
-      app: ts-ui-dashboard
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
-  template:
-    metadata:
-      labels:
-        app: ts-ui-dashboard
-        tag: #Change
-    spec:
-      containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-ui-dashboard
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+        image: $REGISTRY_HOST/ts-voucher-service:latest
 
----
+        imagePullPolicy: IfNotPresent
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: ts-avatar-service
-    tag: #Change
-  name: ts-avatar-service
-  namespace: {{ .Values.appNamespace.name }} 
-spec:
-  replicas: {{ .Values.replicaCount }} 
-  selector:
-    matchLabels:
-      app: ts-avatar-service
-      tag: #Change
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
-  template:
-    metadata:
-      labels:
-        app: ts-avatar-service
-        tag: #Change
-    spec:
-      containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: ts-avatar-service
-        resources:
-{{ toYaml .Values.resources | indent 12 }} 
+        ports:
+
+        - containerPort: 16101
+
+        readinessProbe:
+
+          tcpSocket:
+
+            port: 16101
+
+          initialDelaySeconds: 160
+
+          periodSeconds: 10
+
+          timeoutSeconds: 5 
+
