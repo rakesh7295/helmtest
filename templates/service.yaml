@@ -1,1405 +1,852 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-user-mongo 
-  namespace: train-mongo
+  name: {{ .Values.tsUserMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017
+      port: {{ .Values.tsUserMongoService.servicePort }}
   selector:
-   app: ts-user-mongo 
+   app: {{ .Values.tsUserMongoService.label.app }}
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-auth-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsAuthMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017
+      port: {{ .Values.tsAuthMongoService.servicePort }}
   selector:
-   app: ts-auth-mongo
+   app: {{ .Values.tsAuthMongoService.label.app }}
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-route-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsRouteMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017  
+      port: {{ .Values.tsRouteMongoService.servicePort }}
   selector:
-   app: ts-route-mongo
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: ts-contacts-mongo
-  namespace: train-mongo
-spec:
-  ports:
-    - name: http
-      port: 27017  
-  selector:
-   app: ts-contacts-mongo
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: ts-order-mongo
-  namespace: train-mongo
-spec:
-  ports:
-    - name: http
-      port: 27017  
-  selector:
-   app: ts-order-mongo
+   app: {{ .Values.tsRouteMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-order-other-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsContactsMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017  
+      port: {{ .Values.tsContactsMongoService.servicePort }}
   selector:
-   app: ts-order-other-mongo
+   app: {{ .Values.tsContactsMongoService.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsOrderMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsOrderMongoService.servicePort }}
+  selector:
+   app: {{ .Values.tsOrderMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-config-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsOrderOtherMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsOrderOtherMongoService.servicePort }}
   selector:
-   app: ts-config-mongo    
+   app: {{ .Values.tsOrderOtherMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-station-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsConfigMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsConfigMongoService.servicePort }}
   selector:
-   app: ts-station-mongo   
+   app: {{ .Values.tsConfigMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-train-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsStationMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsStationMongoService.servicePort }}
   selector:
-   app: ts-train-mongo
+   app: {{ .Values.tsStationMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-travel-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsTrainMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsTrainMongoService.servicePort }}
   selector:
-   app: ts-travel-mongo  
+   app: {{ .Values.tsTrainMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-travel2-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsTravelMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsTravelMongoService.servicePort }}
   selector:
-   app: ts-travel2-mongo
+   app: {{ .Values.tsTravelMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-price-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsTrain2MongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsTrain2MongoService.servicePort }}
   selector:
-   app: ts-price-mongo    
+   app: {{ .Values.tsTrain2MongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-security-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsPriceMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017  
+      port: {{ .Values.tsPriceMongoService.servicePort }}
   selector:
-   app: ts-security-mongo  
+   app: {{ .Values.tsPriceMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-inside-payment-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsSecurityMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsSecurityMongoService.servicePort }}
   selector:
-   app: ts-inside-payment-mongo
+   app: {{ .Values.tsSecurityMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-payment-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsInsidePaymentMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsInsidePaymentMongoService.servicePort }}
   selector:
-   app: ts-payment-mongo
+   app: {{ .Values.tsInsidePaymentMongoService.label.app }}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsPaymentMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsPaymentMongoService.servicePort }}
+  selector:
+   app: {{ .Values.tsPaymentMongoService.label.app }}
   
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-assurance-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsAssuranceMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:  
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsAssuranceMongoService.servicePort }}
   selector:
-   app: ts-assurance-mongo
+   app: {{ .Values.tsAssuranceMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-ticket-office-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsTicketOfficeMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsTicketOfficeMongoService.servicePort }}
   selector:
-   app: ts-ticket-office-mongo
+   app: {{ .Values.tsTicketOfficeMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-voucher-mysql
-  namespace: train-mongo
+  name: {{ .Values.tsVoucherMysqlService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 3306  
+      port: {{ .Values.tsVoucherMysqlService.servicePort }}
   selector:
-   app: ts-voucher-mysql
+   app: {{ .Values.tsVoucherMysqlService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-food-map-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsFoodMapMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017  
+      port: {{ .Values.tsFoodMapMongoService.servicePort }}
   selector:
-   app: ts-food-map-mongo
+   app: {{ .Values.tsFoodMapMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-consign-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsConsignMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsConsignMongoService.servicePort }}
   selector:
-   app: ts-consign-mongo
+   app: {{ .Values.tsConsignMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-consign-price-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsConsignPriceMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsConsignPriceMongoService.servicePort }}
   selector:
-   app: ts-consign-price-mongo
+   app: {{ .Values.tsConsignPriceMongoService.label.app }}
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-food-mongo
-  namespace: train-mongo
+  name: {{ .Values.tsFoodMongoService.name }}
+  namespace: {{ .Values.dbNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 27017    
+      port: {{ .Values.tsFoodMongoService.servicePort }}
   selector:
-   app: ts-food-mongo
+   app: {{ .Values.tsFoodMongoService.label.app }}
 ---
+
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-admin-basic-info-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsAdminBasicInfoService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 18767
-
+      port: {{ .Values.tsAdminBasicInfoService.servicePort }}
   selector:
-
-   app: ts-admin-basic-info-service
-
-
-
+   app: {{ .Values.tsAdminBasicInfoService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-admin-order-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsAdminOrderService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 16112
-
+      port: {{ .Values.tsAdminOrderService.servicePort }}
   selector:
-
-   app: ts-admin-order-service
-
-
-
+   app: {{ .Values.tsAdminOrderService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-admin-route-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsAdminRouteService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 16113
-
+      port: {{ .Values.tsAdminRouteService.servicePort }}
   selector:
-
-   app: ts-admin-route-service
-
-
-
+   app: {{ .Values.tsAdminRouteService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-admin-travel-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsAdminTravelService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 16114
-
+      port: {{ .Values.tsAdminTravelService.servicePort }}
   selector:
-
-   app: ts-admin-travel-service
-
-
-
+   app: {{ .Values.tsAdminTravelService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-admin-user-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsAdminUserService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 16115
-
+      port: {{ .Values.tsAdminUserService.servicePort }}
   selector:
-
-   app: ts-admin-user-service
-
-
-
+   app: {{ .Values.tsAdminUserService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-assurance-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsAssuranceService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 18888
-
+      port: {{ .Values.tsAssuranceService.servicePort }}
   selector:
-
-   app: ts-assurance-service
-
-
-
+   app: {{ .Values.tsAssuranceService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-basic-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsBasicService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 15680
-
+      port: {{ .Values.tsBasicService.servicePort }}
   selector:
-
-   app: ts-basic-service
-
-
-
+   app: {{ .Values.tsBasicService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-cancel-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsCancelService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 18885
-
+      port: {{ .Values.tsCancelService.servicePort }}
   selector:
-
-   app: ts-cancel-service
-
-
-
+   app: {{ .Values.tsCancelService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-config-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsConfigService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 15679
-
+      port: {{ .Values.tsConfigService.servicePort }}
   selector:
-
-   app: ts-config-service
-
-
-
+   app: {{ .Values.tsConfigService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-consign-price-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsConsignPriceService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 16110
-
+      port: {{ .Values.tsConsignPriceService.servicePort }}
   selector:
-
-   app: ts-consign-price-service
-
-
-
+   app: {{ .Values.tsConsignPriceService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-consign-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsConsignService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 16111
-
+      port: {{ .Values.tsConsignService.servicePort }}
   selector:
-
-   app: ts-consign-service
-
-
-
+   app: {{ .Values.tsConsignService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-contacts-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsContactsService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 12347
-
+      port: {{ .Values.tsContactsService.servicePort }}
   selector:
-
-   app: ts-contacts-service
-
-
-
+   app: {{ .Values.tsContactsService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-execute-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsExecuteService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 12386
-
+      port: {{ .Values.tsExecuteService.servicePort }}
   selector:
-
-   app: ts-execute-service
-
-
-
+   app: {{ .Values.tsExecuteService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-food-map-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsFoodMapService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 18855
-
+      port: {{ .Values.tsFoodMapService.servicePort }}
   selector:
-
-   app: ts-food-map-service
-
-
-
+   app: {{ .Values.tsFoodMapService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-food-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsFoodService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 18856
-
+      port: {{ .Values.tsFoodService.servicePort }}
   selector:
-
-   app: ts-food-service
-
-
-
+   app: {{ .Values.tsFoodService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-inside-payment-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsInsidePaymentService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 18673
-
+      port: {{ .Values.tsInsidePaymentService.servicePort }}
   selector:
-
-   app: ts-inside-payment-service
-
-
-
+   app: {{ .Values.tsInsidePaymentService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-user-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsUserService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 12342
-
+      port: {{ .Values.tsUserService.servicePort }}
   selector:
-
-   app: ts-user-service
-
-
-
+   app: {{ .Values.tsUserService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-notification-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsNotificationService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 17853
-
+      port: {{ .Values.tsNotificationService.servicePort }}
   selector:
-
-   app: ts-notification-service
-
-
-
+   app: {{ .Values.tsNotificationService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-news-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsNewsService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 12862
-
+      port: {{ .Values.tsNewsService.servicePort }}
   selector:
-
-   app: ts-news-service
-
-
-
+   app: {{ .Values.tsNewsService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-order-other-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsOrderOtherService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 12032
-
+      port: {{ .Values.tsOrderOtherService.servicePort }}
   selector:
-
-   app: ts-order-other-service
-
-
-
+   app: {{ .Values.tsOrderOtherService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-order-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsOrderService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 12031
-
+      port: {{ .Values.tsOrderService.servicePort }}
   selector:
-
-   app: ts-order-service
-
-
-
+   app: {{ .Values.tsOrderService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-payment-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsPaymentService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 19001
-
+      port: {{ .Values.tsPaymentService.servicePort }}
   selector:
-
-   app: ts-payment-service
-
-
-
+   app: {{ .Values.tsPaymentService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-preserve-other-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsPreserveOtherService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 14569
-
+      port: {{ .Values.tsPreserveOtherService.servicePort }}
   selector:
-
-   app: ts-preserve-other-service
-
-
-
+   app: {{ .Values.tsPreserveOtherService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-preserve-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsPreserveService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 14568
-
+      port: {{ .Values.tsPreserveService.servicePort }}
   selector:
-
-   app: ts-preserve-service
-
-
-
+   app: {{ .Values.tsPreserveService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-price-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsPriceService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 16579
-
+      port: {{ .Values.tsPriceService.servicePort }}
   selector:
-
-   app: ts-price-service
-
-
-
+   app: {{ .Values.tsPriceService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-rebook-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsRebookService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 18886
-
+      port: {{ .Values.tsRebookService.servicePort }}
   selector:
-
-   app: ts-rebook-service
-
-
-
+   app: {{ .Values.tsRebookService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-route-plan-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsRouteplanService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 14578
-
+      port: {{ .Values.tsRouteplanService.servicePort }}
   selector:
-
-   app: ts-route-plan-service
-
-
-
+   app: {{ .Values.tsRouteplanService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-route-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsRouteService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 11178
-
+      port: {{ .Values.tsRouteService.servicePort }}
   selector:
-
-   app: ts-route-service
-
-
-
+   app: {{ .Values.tsRouteService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-seat-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsSeatService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 18898
-
+      port: {{ .Values.tsSeatService.servicePort }}
   selector:
-
-   app: ts-seat-service
-
-
-
+   app: {{ .Values.tsSeatService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-security-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsSecurityService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   ports:
-
     - name: http
-
-      port: 11188
-
+      port: {{ .Values.tsSecurityService.servicePort }}
   selector:
-
-   app: ts-security-service
-
-
-
+   app: {{ .Values.tsSecurityService.label.app }}
 ---
 
-
-
 apiVersion: v1
-
 kind: Service
-
 metadata:
-
-  name: ts-auth-service
-
-  namespace: train-app
-
+  name: {{ .Values.tsAuthService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
-
   type: LoadBalancer
-
   ports:
-
     - name: http
-
-      port: 12340
-
+      port: {{ .Values.tsAuthService.servicePort }}
   selector:
-
-   app: ts-auth-service
-
-
-
----
-
-
-
-apiVersion: v1
-
-kind: Service
-
-metadata:
-
-  name: ts-station-service
-
-  namespace: train-app
-
-spec:
-
-  ports:
-
-    - name: http
-
-      port: 12345
-
-  selector:
-
-   app: ts-station-service
-
-
-
----
-
-
-
-apiVersion: v1
-
-kind: Service
-
-metadata:
-
-  name: ts-ticket-office-service
-
-  namespace: train-app
-
-spec:
-
-  ports:
-
-    - name: http
-
-      port: 16108
-
-  selector:
-
-   app: ts-ticket-office-service
-
-
-
----
-
-
-
-apiVersion: v1
-
-kind: Service
-
-metadata:
-
-  name: ts-ticketinfo-service
-
-  namespace: train-app
-
-spec:
-
-  ports:
-
-    - name: http
-
-      port: 15681
-
-  selector:
-
-   app: ts-ticketinfo-service
-
-
-
----
-
-
-
-apiVersion: v1
-
-kind: Service
-
-metadata:
-
-  name: ts-train-service
-
-  namespace: train-app
-
-spec:
-
-  ports:
-
-    - name: http
-
-      port: 14567
-
-  selector:
-
-   app: ts-train-service
-
-
-
----
-
-
-
-apiVersion: v1
-
-kind: Service
-
-metadata:
-
-  name: ts-travel2-service
-
-  namespace: train-app
-
-spec:
-
-  ports:
-
-    - name: http
-
-      port: 16346
-
-  selector:
-
-   app: ts-travel2-service
-
-
-
----
-
-
-
-apiVersion: v1
-
-kind: Service
-
-metadata:
-
-  name: ts-travel-plan-service
-
-  namespace: train-app
-
-spec:
-
-  ports:
-
-    - name: http
-
-      port: 14322
-
-  selector:
-
-   app: ts-travel-plan-service
-
-
-
----
-
-
-
-apiVersion: v1
-
-kind: Service
-
-metadata:
-
-  name: ts-travel-service
-
-  namespace: train-app
-
-spec:
-
-  ports:
-
-    - name: http
-
-      port: 12346
-
-  selector:
-
-   app: ts-travel-service
-
-
-
-
-
----
-
-
-
-apiVersion: v1
-
-kind: Service
-
-metadata:
-
-  name: ts-verification-code-service
-
-  namespace: train-app
-
-spec:
-
-  ports:
-
-    - name: http
-
-      port: 15678
-
-  selector:
-   app: ts-verification-code-service
+   app: {{ .Values.tsAuthService.label.app }}
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ts-voucher-service
-  namespace: train-app
+  name: {{ .Values.tsStationService.name }}
+  namespace: {{ .Values.appNamespace.name }}
 spec:
   ports:
     - name: http
-      port: 16101
+      port: {{ .Values.tsStationService.servicePort }}
   selector:
-   app: ts-voucher-service
+   app: {{ .Values.tsStationService.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsTicketOfficeService.name }}
+  namespace: {{ .Values.appNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsTicketOfficeService.servicePort }}
+  selector:
+   app: {{ .Values.tsTicketOfficeService.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsTicketinfoService.name }}
+  namespace: {{ .Values.appNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsTicketinfoService.servicePort }}
+  selector:
+   app: {{ .Values.tsTicketinfoService.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsTrainService.name }}
+  namespace: {{ .Values.appNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsTrainService.servicePort }}
+  selector:
+   app: {{ .Values.tsTrainService.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsTravel2Service.name }}
+  namespace: {{ .Values.appNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsTravel2Service.servicePort }}
+  selector:
+   app: {{ .Values.tsTravel2Service.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsTravelPlanService.name }}
+  namespace: {{ .Values.appNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsTravelPlanService.servicePort }}
+  selector:
+   app: {{ .Values.tsTravelPlanService.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsTravelService.name }}
+  namespace: {{ .Values.appNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsTravelService.servicePort }}
+  selector:
+   app: {{ .Values.tsTravelService.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsVerificationCodeService.name }}
+  namespace: {{ .Values.appNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsVerificationCodeService.servicePort }}
+  selector:
+   app: {{ .Values.tsVerificationCodeService.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsVoucherService.name }}
+  namespace: {{ .Values.appNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsVoucherService.servicePort }}
+  selector:
+   app: {{ .Values.tsVoucherService.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsUiDashboard.name }}
+  namespace: {{ .Values.appNamespace.name }}
+spec:
+  type: {{ .Values.tsUiDashboard.serviceType }}
+  ports:
+    - name: http
+      port: {{ .Values.tsUiDashboard.servicePort }}
+      nodePort: {{ .Values.tsUiDashboard.nodePort }}
+  selector:
+   app: {{ .Values.tsUiDashboard.label.app }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.tsAvatarService.name }}
+  namespace: {{ .Values.appNamespace.name }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.tsAvatarService.servicePort }}
+  selector:
+   app: {{ .Values.tsAvatarService.label.app }}
 

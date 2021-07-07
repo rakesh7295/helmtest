@@ -628,7 +628,7 @@ tsStationService:
   servicePort: 12345
   serviceType: ClusterIP
 
-tsTicketService:
+tsTicketOfficeService:
   name: ts-ticket-office-service
   label:
     app: ts-ticket-office-service
@@ -757,5 +757,3 @@ tsAvatarService:
   tcpSocketPort: 17001
   servicePort: 17001
   serviceType: ClusterIP
-
-  
